@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Timeline do Eliel 💙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Quicksand',sans-serif;
+  -webkit-user-select:none;
+  user-select:none;
+}
+
+body{
+  background:linear-gradient(#08142e,#0f2557);
+  color:#e6ecff;
+  text-align:center;
+  overflow-x:hidden;
+  padding-bottom:60px;
+}
+
+/* ⭐ ESTRELAS */
+.estrela{
+  position:fixed;
+  top:-10px;
+  font-size:12px;
+  animation:cair linear infinite;
+  opacity:.8;
+  z-index:0;
+}
+@keyframes cair{
+  from{transform:translateY(0)}
+  to{transform:translateY(110vh)}
+}
+
+/* 🔐 LOGIN */
+#login{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(#08142e,#0f2557);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+}
+.login-box{
+  background:rgba(255,255,255,.12);
+  padding:30px;
+  border-radius:25px;
+  width:90%;
+  max-width:360px;
+  box-shadow:0 15px 30px rgba(0,0,0,.5);
+}
+.login-box h2{
+  color:#bcd4ff;
+  margin-bottom:10px;
+}
+.login-box p{
+  font-size:14px;
+  margin-bottom:15px;
+}
+.login-box input{
+  width:100%;
+  padding:12px;
+  border-radius:20px;
+  border:none;
+  outline:none;
+  margin-bottom:15px;
+  text-align:center;
+  font-size:16px;
+}
+.login-box button{
+  width:100%;
+  padding:12px;
+  border-radius:25px;
+  border:none;
+  background:#9bbcff;
+  color:#08142e;
+  font-weight:600;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* 📅 TIMELINE */
+header{
+  padding:30px 20px;
+  background:rgba(0,0,0,.35);
+  border-bottom-left-radius:30px;
+  border-bottom-right-radius:30px;
+  position:relative;
+  z-index:1;
+}
+
+.timeline{
+  max-width:900px;
+  margin:40px auto;
+  padding:0 20px;
+  display:none;
+  position:relative;
+  z-index:1;
+}
+
+.evento{
+  background:rgba(255,255,255,.12);
+  border-radius:25px;
+  padding:20px;
+  margin-bottom:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+.evento h3{
+  color:#9bbcff;
+  margin-bottom:10px;
+}
+
+.evento p{
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.evento img,
+.evento video{
+  width:100%;
+  border-radius:20px;
+  pointer-events:none;
+}
+
+.voltar{
+  display:none;
+  margin-top:30px;
+  padding:14px 34px;
+  background:#9bbcff;
+  color:#08142e;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 LOGIN -->
+<div id="login">
+  <div class="login-box">
+    <h2>🔒 Área protegida</h2>
+    <p>Digite a senha para ver a timeline do Eliel</p>
+    <input type="password" id="senha" placeholder="Senha">
+    <button onclick="verificarSenha()">Entrar</button>
+  </div>
+</div>
+
+<header>
+  <h1>📅 Timeline do Eliel</h1>
+  <p>Cada momento, um pedacinho de amor 💙</p>
+</header>
+
+<div class="timeline" id="timeline">
+
+  <div class="evento">
+    <h3>👶 Nascimento</h3>
+    <p>O dia em que o amor ganhou nome.</p>
+    <img src="nascimento.jpg" alt="Nascimento do Eliel">
+  </div>
+
+  <div class="evento">
+    <h3>😊 Primeiro sorriso</h3>
+    <p>Um sorriso que mudou tudo.</p>
+    <video controls playsinline>
+      <source src="primeiro_sorriso.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="evento">
+    <h3>💙 Primeira bobeira/h3>
+    <p>Momentos simples, amor infinito.</p>
+    <img src="primeiro_banho.jpg" alt="Primeiros dias">
+  </div>
+
+</div>
+
+<a href="home.html" class="voltar" id="voltar">⬅ Voltar ao menu</a>
+
+<script>
+const SENHA_CORRETA = "eliel123";
+
+function verificarSenha(){
+  const senha = document.getElementById("senha").value;
+  if(senha === SENHA_CORRETA){
+    document.getElementById("login").style.display="none";
+    document.getElementById("timeline").style.display="block";
+    document.getElementById("voltar").style.display="inline-block";
+  } else {
+    alert("❌ Senha incorreta");
+  }
+}
+
+/* ❌ BLOQUEIOS */
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',function(e){
+  if(
+    e.key==="PrintScreen" ||
+    (e.ctrlKey && ["s","u","p","c"].includes(e.key.toLowerCase()))
+  ){
+    e.preventDefault();
+    alert("🔒 Conteúdo protegido");
+  }
+});
+
+/* ⭐ ESTRELAS */
+function criarEstrela(){
+  const estrela=document.createElement("div");
+  estrela.className="estrela";
+  estrela.innerHTML="⭐";
+  estrela.style.left=Math.random()*window.innerWidth+"px";
+  estrela.style.animationDuration=(3+Math.random()*5)+"s";
+  document.body.appendChild(estrela);
+  setTimeout(()=>estrela.remove(),8000);
+}
+setInterval(criarEstrela,300);
+</script>
+
+</body>
+</html>
