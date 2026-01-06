@@ -1,169 +1,231 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Fotos Especiais – Bebê Eliel</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Fotos do Eliel 💙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Quicksand', sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+}
 
-    body {
-      background: linear-gradient(#0a1633, #0f2557);
-      color: #e6ecff;
-      text-align: center;
-      overflow-x: hidden;
-      padding-bottom: 60px;
-    }
+body {
+  background: linear-gradient(#08142e, #0f2557);
+  color: #e6ecff;
+  text-align: center;
+  overflow-x: hidden;
+  padding-bottom: 60px;
+}
 
-    /* ESTRELAS */
-    .estrela {
-      position: fixed;
-      top: -10px;
-      color: white;
-      font-size: 12px;
-      animation: cair linear infinite;
-      opacity: 0.8;
-      z-index: 0;
-    }
+/* ⭐ ESTRELAS */
+.estrela {
+  position: fixed;
+  top: -10px;
+  font-size: 12px;
+  animation: cair linear infinite;
+  opacity: 0.8;
+  z-index: 0;
+}
 
-    @keyframes cair {
-      from { transform: translateY(0); }
-      to { transform: translateY(110vh); }
-    }
+@keyframes cair {
+  from { transform: translateY(0); }
+  to { transform: translateY(110vh); }
+}
 
-    header {
-      padding: 30px 20px;
-      background: rgba(0,0,0,0.35);
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
-      position: relative;
-      z-index: 1;
-    }
+/* 🔐 TELA DE SENHA */
+#login {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(#08142e, #0f2557);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
 
-    header h1 {
-      color: #bcd4ff;
-      margin-bottom: 5px;
-    }
+.login-box {
+  background: rgba(255,255,255,0.12);
+  padding: 30px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 350px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
 
-    header p {
-      color: #dbe6ff;
-    }
+.login-box h2 {
+  color: #bcd4ff;
+  margin-bottom: 10px;
+}
 
-    .galeria {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px;
-      position: relative;
-      z-index: 1;
-    }
+.login-box p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
 
-    .galeria img {
-      width: 100%;
-      border-radius: 18px;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
-    }
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 16px;
+}
 
-    .galeria img:hover {
-      transform: scale(1.05);
-    }
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  background: #9bbcff;
+  color: #08142e;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-    }
+/* 📸 GALERIA */
+header {
+  padding: 30px 20px;
+  background: rgba(0,0,0,0.35);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  position: relative;
+  z-index: 1;
+}
 
-    .modal img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 20px;
-    }
+header h1 {
+  color: #bcd4ff;
+}
 
-    .voltar {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 14px 34px;
-      background: #9bbcff;
-      color: #0a1633;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: 600;
-      position: relative;
-      z-index: 1;
-    }
-  </style>
+header p {
+  color: #dbe6ff;
+}
+
+.galeria {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  position: relative;
+  z-index: 1;
+  display: none;
+}
+
+.foto {
+  background: rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.foto img {
+  width: 100%;
+  border-radius: 15px;
+  pointer-events: none;
+}
+
+.aviso {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #cfe0ff;
+  display: none;
+}
+
+.voltar {
+  display: none;
+  margin-top: 30px;
+  padding: 14px 34px;
+  background: #9bbcff;
+  color: #08142e;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+}
+</style>
 </head>
+
 <body>
 
-  <!-- MÚSICA -->
-  <audio autoplay loop>
-    <source src="musica.mp3" type="audio/mpeg">
-  </audio>
-
-  <header>
-    <h1>📸 Fotos Especiais</h1>
-    <p>Cada foto é uma estrelinha guardada 💙</p>
-  </header>
-
-  <div class="galeria">
-    <img src="foto1.jpg" onclick="abrir(this)">
-    <img src="foto2.jpg" onclick="abrir(this)">
-    <img src="foto3.jpg" onclick="abrir(this)">
-    <img src="foto4.jpg" onclick="abrir(this)">
-    <img src="foto5.jpg" onclick="abrir(this)">
-    <img src="foto6.jpg" onclick="abrir(this)">
+<!-- 🔐 LOGIN -->
+<div id="login">
+  <div class="login-box">
+    <h2>🔒 Área protegida</h2>
+    <p>Digite a senha para ver as fotos do Eliel</p>
+    <input type="password" id="senha" placeholder="Senha">
+    <button onclick="verificarSenha()">Entrar</button>
   </div>
+</div>
 
-  <a href="home.html" class="voltar">⬅ Voltar ao menu</a>
+<header>
+  <h1>📸 Fotos do Eliel</h1>
+  <p>Momentos especiais guardados com amor 💙</p>
+</header>
 
-  <!-- MODAL -->
-  <div class="modal" id="modal" onclick="fechar()">
-    <img id="imgModal">
-  </div>
+<div class="galeria" id="galeria">
+  <div class="foto"><img src="foto1.jpg"></div>
+  <div class="foto"><img src="foto2.jpg"></div>
+  <div class="foto"><img src="foto3.jpg"></div>
+  <div class="foto"><img src="foto4.jpg"></div>
+  <div class="foto"><img src="foto5.jpg"></div>
+  <div class="foto"><img src="foto6.jpg"></div>
+</div>
 
-  <script>
-    function abrir(img) {
-      document.getElementById("modal").style.display = "flex";
-      document.getElementById("imgModal").src = img.src;
-    }
+<p class="aviso" id="aviso">
+  🔒 Conteúdo protegido – não compartilhe
+</p>
 
-    function fechar() {
-      document.getElementById("modal").style.display = "none";
-    }
+<a href="home.html" class="voltar" id="voltar">⬅ Voltar ao menu</a>
 
-    function criarEstrela() {
-      const estrela = document.createElement("div");
-      estrela.className = "estrela";
-      estrela.innerHTML = "⭐";
-      estrela.style.left = Math.random() * window.innerWidth + "px";
-      estrela.style.animationDuration = (3 + Math.random() * 5) + "s";
-      document.body.appendChild(estrela);
-      setTimeout(() => estrela.remove(), 8000);
-    }
+<script>
+const SENHA_CORRETA = "6012026";
 
-    setInterval(criarEstrela, 300);
-  </script>
+function verificarSenha() {
+  const senha = document.getElementById("senha").value;
+  if (senha === SENHA_CORRETA) {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("galeria").style.display = "grid";
+    document.getElementById("aviso").style.display = "block";
+    document.getElementById("voltar").style.display = "inline-block";
+  } else {
+    alert("❌ Senha incorreta");
+  }
+}
+
+// ❌ Bloqueios
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', function(e) {
+  if (
+    e.key === "PrintScreen" ||
+    (e.ctrlKey && ["s","u","p","c"].includes(e.key.toLowerCase()))
+  ) {
+    e.preventDefault();
+    alert("🔒 Conteúdo protegido");
+  }
+});
+
+// ⭐ Estrelas
+function criarEstrela() {
+  const estrela = document.createElement("div");
+  estrela.className = "estrela";
+  estrela.innerHTML = "⭐";
+  estrela.style.left = Math.random() * window.innerWidth + "px";
+  estrela.style.animationDuration = (3 + Math.random() * 5) + "s";
+  document.body.appendChild(estrela);
+  setTimeout(() => estrela.remove(), 8000);
+}
+setInterval(criarEstrela, 300);
+</script>
 
 </body>
 </html>
