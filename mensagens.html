@@ -16,7 +16,7 @@
     }
 
     body {
-      background: linear-gradient(#0a1633, #0f2557);
+      background: linear-gradient(#08142e, #0f2557);
       color: #e6ecff;
       text-align: center;
       overflow-x: hidden;
@@ -27,7 +27,6 @@
     .estrela {
       position: fixed;
       top: -10px;
-      color: white;
       font-size: 12px;
       animation: cair linear infinite;
       opacity: 0.8;
@@ -62,14 +61,14 @@
       margin: 30px auto;
       padding: 0 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 20px;
       position: relative;
       z-index: 1;
     }
 
     .cartinha {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.12);
       border-radius: 25px;
       padding: 22px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.4);
@@ -84,17 +83,17 @@
 
     .cartinha button {
       background: #9bbcff;
-      color: #0a1633;
+      color: #08142e;
       border: none;
       border-radius: 30px;
-      padding: 10px 26px;
+      padding: 10px 28px;
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
     }
 
     .cartinha button:hover {
-      background: #bcd4ff;
+      background: #cfe0ff;
     }
 
     .voltar {
@@ -102,7 +101,7 @@
       margin-top: 30px;
       padding: 14px 34px;
       background: #9bbcff;
-      color: #0a1633;
+      color: #08142e;
       text-decoration: none;
       border-radius: 30px;
       font-weight: 600;
@@ -179,14 +178,22 @@
       <button onclick="tocar('audio9')">▶ Ouvir</button>
     </div>
 
+    <div class="cartinha">
+      <h3>Tia Dani</h3>
+      <audio id="audio10" src="tia_dani.mp3"></audio>
+      <button onclick="tocar('audio10')">▶ Ouvir</button>
+    </div>
+
   </div>
 
   <a href="home.html" class="voltar">⬅ Voltar ao menu</a>
 
   <script>
     function tocar(id) {
-      document.querySelectorAll("audio").forEach(a => {
-        if (a.id !== id) a.pause();
+      document.querySelectorAll("audio").forEach(audio => {
+        if (audio.id !== id) {
+          audio.pause();
+        }
       });
       const audio = document.getElementById(id);
       audio.currentTime = 0;
