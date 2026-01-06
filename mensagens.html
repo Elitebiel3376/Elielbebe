@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Mensagens da Família – Bebê Eliel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#0a1633, #0f2557);
+      color: #e6ecff;
+      text-align: center;
+      overflow-x: hidden;
+      padding-bottom: 60px;
+    }
+
+    /* ESTRELAS */
+    .estrela {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 12px;
+      animation: cair linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    @keyframes cair {
+      from { transform: translateY(0); }
+      to { transform: translateY(110vh); }
+    }
+
+    header {
+      padding: 30px 20px;
+      background: rgba(0,0,0,0.35);
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      color: #bcd4ff;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      color: #dbe6ff;
+    }
+
+    .mensagens {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cartinha {
+      background: rgba(255,255,255,0.1);
+      border-radius: 25px;
+      padding: 22px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      backdrop-filter: blur(6px);
+    }
+
+    .cartinha h3 {
+      color: #9bbcff;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    .cartinha button {
+      background: #9bbcff;
+      color: #0a1633;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 26px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .cartinha button:hover {
+      background: #bcd4ff;
+    }
+
+    .voltar {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 34px;
+      background: #9bbcff;
+      color: #0a1633;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MÚSICA DE FUNDO -->
+  <audio autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <header>
+    <h1>💌 Mensagens da Família</h1>
+    <p>Cada voz é um carinho para o Eliel 💙</p>
+  </header>
+
+  <div class="mensagens">
+
+    <div class="cartinha">
+      <h3>Tio Diego</h3>
+      <audio id="audio1" src="tio_diego.mp3"></audio>
+      <button onclick="tocar('audio1')">▶ Ouvir</button>
+    </div>
+
+    <div class="cartinha">
+      <h3>Tia Janaína</h3>
+      <audio id="audio2" src="tia_janaina.mp3"></audio>
+      <button onclick="tocar('audio2')">▶ Ouvir</button>
+    </div>
+
+    <div class="cartinha">
+      <h3>Enzo Primo</h3>
+      <audio id="audio3" src="enzo.mp3"></audio>
+      <button onclick="tocar('audio3')">▶ Ouvir</button>
+    </div>
+
+    <div class="cartinha">
+      <h3>Lívia Prima</h3>
+      <audio id="audio4" src="livia.mp3"></audio>
+      <button onclick="tocar('audio4')">▶ Ouvir</button>
+    </div>
+
+    <div class="cartinha">
+      <h3>Vó Ana</h3>
+      <audio id="audio5" src="vo_ana.mp3"></audio>
+      <button onclick="tocar('audio5')">▶ Ouvir</button>
+    </div>
+
+    <div class="cartinha">
+      <h3>Vó Severina</h3>
+      <audio id="audio6" src="vo_severina.mp3"></audio>
+      <button onclick="tocar('audio6')">▶ Ouvir</button>
+    </div>
+
+    <div class="cartinha">
+      <h3>Vô Francisco</h3>
+      <audio id="audio7" src="vo_francisco.mp3"></audio>
+      <button onclick="tocar('audio7')">▶ Ouvir</button>
+    </div>
+
+    <div class="cartinha">
+      <h3>Henrique Primo</h3>
+      <audio id="audio8" src="henrique.mp3"></audio>
+      <button onclick="tocar('audio8')">▶ Ouvir</button>
+    </div>
+
+    <div class="cartinha">
+      <h3>Tio Felipe</h3>
+      <audio id="audio9" src="tio_felipe.mp3"></audio>
+      <button onclick="tocar('audio9')">▶ Ouvir</button>
+    </div>
+
+  </div>
+
+  <a href="home.html" class="voltar">⬅ Voltar ao menu</a>
+
+  <script>
+    function tocar(id) {
+      document.querySelectorAll("audio").forEach(a => {
+        if (a.id !== id) a.pause();
+      });
+      const audio = document.getElementById(id);
+      audio.currentTime = 0;
+      audio.play();
+    }
+
+    function criarEstrela() {
+      const estrela = document.createElement("div");
+      estrela.className = "estrela";
+      estrela.innerHTML = "⭐";
+      estrela.style.left = Math.random() * window.innerWidth + "px";
+      estrela.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(estrela);
+      setTimeout(() => estrela.remove(), 8000);
+    }
+
+    setInterval(criarEstrela, 300);
+  </script>
+
+</body>
+</html>

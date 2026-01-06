@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Linha do Tempo – Bebê Eliel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#0a1633, #0f2557);
+      color: #e6ecff;
+      text-align: center;
+      overflow-x: hidden;
+      padding-bottom: 60px;
+    }
+
+    /* ESTRELAS */
+    .estrela {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 12px;
+      animation: cair linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    @keyframes cair {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    header {
+      padding: 30px 20px;
+      background: rgba(0,0,0,0.3);
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 26px;
+      color: #bcd4ff;
+    }
+
+    header p {
+      color: #dbe6ff;
+    }
+
+    .timeline {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .evento {
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    .evento img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .evento h2 {
+      color: #9bbcff;
+      margin-bottom: 5px;
+    }
+
+    .evento span {
+      font-size: 14px;
+      color: #c7d6ff;
+    }
+
+    .evento p {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #e6ecff;
+    }
+
+    .voltar {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 34px;
+      background: #9bbcff;
+      color: #0a1633;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+    }
+
+    .voltar:hover {
+      background: #bcd4ff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MÚSICA -->
+  <audio autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <header>
+    <h1>📅 Linha do Tempo do Eliel</h1>
+    <p>Momentos iluminados como estrelas 💙</p>
+  </header>
+
+  <div class="timeline">
+
+    <div class="evento">
+      <img src="nascimento.jpg">
+      <h2>👶 Nascimento</h2>
+      <span>Data: 00/00/0000</span>
+      <p>
+        O dia em que o nosso céu ganhou a estrela mais brilhante.
+      </p>
+    </div>
+
+    <div class="evento">
+      <img src="primeiro_banho.jpg">
+      <h2>🛁 Primeiro banho</h2>
+      <span>Data: 00/00/0000</span>
+      <p>
+        Um momento de cuidado, amor e muita delicadeza.
+      </p>
+    </div>
+
+    <div class="evento">
+      <img src="primeiro_sorriso.jpg">
+      <h2>😄 Primeiro sorriso</h2>
+      <span>Data: 00/00/0000</span>
+      <p>
+        Um sorriso capaz de iluminar qualquer noite.
+      </p>
+    </div>
+
+    <a href="index.html" class="voltar">⬅ Voltar ao início</a>
+
+  </div>
+
+  <!-- SCRIPT DAS ESTRELAS -->
+  <script>
+    function criarEstrela() {
+      const estrela = document.createElement("div");
+      estrela.classList.add("estrela");
+      estrela.innerHTML = "⭐";
+      estrela.style.left = Math.random() * window.innerWidth + "px";
+      estrela.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(estrela);
+
+      setTimeout(() => {
+        estrela.remove();
+      }, 8000);
+    }
+
+    setInterval(criarEstrela, 300);
+  </script>
+
+</body>
+</html>

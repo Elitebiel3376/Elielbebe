@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fotos Especiais – Bebê Eliel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#0a1633, #0f2557);
+      color: #e6ecff;
+      text-align: center;
+      overflow-x: hidden;
+      padding-bottom: 60px;
+    }
+
+    /* ESTRELAS */
+    .estrela {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 12px;
+      animation: cair linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    @keyframes cair {
+      from { transform: translateY(0); }
+      to { transform: translateY(110vh); }
+    }
+
+    header {
+      padding: 30px 20px;
+      background: rgba(0,0,0,0.35);
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      color: #bcd4ff;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      color: #dbe6ff;
+    }
+
+    .galeria {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .galeria img {
+      width: 100%;
+      border-radius: 18px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 20px;
+    }
+
+    .voltar {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 34px;
+      background: #9bbcff;
+      color: #0a1633;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MÚSICA -->
+  <audio autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <header>
+    <h1>📸 Fotos Especiais</h1>
+    <p>Cada foto é uma estrelinha guardada 💙</p>
+  </header>
+
+  <div class="galeria">
+    <img src="foto1.jpg" onclick="abrir(this)">
+    <img src="foto2.jpg" onclick="abrir(this)">
+    <img src="foto3.jpg" onclick="abrir(this)">
+    <img src="foto4.jpg" onclick="abrir(this)">
+    <img src="foto5.jpg" onclick="abrir(this)">
+    <img src="foto6.jpg" onclick="abrir(this)">
+  </div>
+
+  <a href="home.html" class="voltar">⬅ Voltar ao menu</a>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" onclick="fechar()">
+    <img id="imgModal">
+  </div>
+
+  <script>
+    function abrir(img) {
+      document.getElementById("modal").style.display = "flex";
+      document.getElementById("imgModal").src = img.src;
+    }
+
+    function fechar() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function criarEstrela() {
+      const estrela = document.createElement("div");
+      estrela.className = "estrela";
+      estrela.innerHTML = "⭐";
+      estrela.style.left = Math.random() * window.innerWidth + "px";
+      estrela.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(estrela);
+      setTimeout(() => estrela.remove(), 8000);
+    }
+
+    setInterval(criarEstrela, 300);
+  </script>
+
+</body>
+</html>

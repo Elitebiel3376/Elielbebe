@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Acesso – Memórias do Eliel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#0a1633, #0f2557);
+      color: #e6ecff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .estrela {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 12px;
+      animation: cair linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes cair {
+      from { transform: translateY(0); }
+      to { transform: translateY(110vh); }
+    }
+
+    .login {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .login h2 {
+      color: #bcd4ff;
+      margin-bottom: 10px;
+    }
+
+    .login input {
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      margin-top: 12px;
+      width: 220px;
+      font-size: 16px;
+    }
+
+    .login button {
+      margin-top: 18px;
+      padding: 12px 32px;
+      border: none;
+      border-radius: 30px;
+      background: #9bbcff;
+      color: #0a1633;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login">
+    <h2>🔒 Área da Família</h2>
+    <p>Digite a senha para acessar as memórias do Eliel 💙</p>
+    <input type="password" id="senha" placeholder="Senha">
+    <button onclick="entrar()">Entrar</button>
+  </div>
+
+  <script>
+    function entrar() {
+      const senha = document.getElementById("senha").value;
+
+      if (senha === "eliel123") {
+        window.location.href = "home.html";
+      } else {
+        alert("Senha incorreta 💔");
+      }
+    }
+
+    function criarEstrela() {
+      const estrela = document.createElement("div");
+      estrela.className = "estrela";
+      estrela.innerHTML = "⭐";
+      estrela.style.left = Math.random() * window.innerWidth + "px";
+      estrela.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(estrela);
+
+      setTimeout(() => estrela.remove(), 8000);
+    }
+
+    setInterval(criarEstrela, 300);
+  </script>
+
+</body>
+</html>
