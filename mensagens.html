@@ -112,8 +112,8 @@
 </head>
 <body>
 
-  <!-- MÚSICA DE FUNDO -->
-  <audio autoplay loop>
+  <!-- MÚSICA DE FUNDO (SEM AUTOPLAY – regra do celular) -->
+  <audio id="musicaFundo" loop>
     <source src="musica.mp3" type="audio/mpeg">
   </audio>
 
@@ -150,44 +150,44 @@
 
     <div class="cartinha">
       <h3>Luiza Prima</h3>
-      <audio id="audio11" src="luiza.mp3"></audio>
-      <button onclick="tocar('audio11')">▶ Ouvir</button>
-    </div>
-
-    <div class="cartinha">
-      <h3>Vó Ana</h3>
-      <audio id="audio5" src="vo_ana.mp3"></audio>
+      <audio id="audio5" src="luiza.mp3"></audio>
       <button onclick="tocar('audio5')">▶ Ouvir</button>
     </div>
 
     <div class="cartinha">
-      <h3>Vó Severina</h3>
-      <audio id="audio6" src="vo_severina.mp3"></audio>
+      <h3>Vó Ana</h3>
+      <audio id="audio6" src="vo_ana.mp3"></audio>
       <button onclick="tocar('audio6')">▶ Ouvir</button>
     </div>
 
     <div class="cartinha">
-      <h3>Vô Francisco</h3>
-      <audio id="audio7" src="vo_francisco.mp3"></audio>
+      <h3>Vó Severina</h3>
+      <audio id="audio7" src="vo_severina.mp3"></audio>
       <button onclick="tocar('audio7')">▶ Ouvir</button>
     </div>
 
     <div class="cartinha">
-      <h3>Henrique Primo</h3>
-      <audio id="audio8" src="henrique.mp3"></audio>
+      <h3>Vô Francisco</h3>
+      <audio id="audio8" src="vo_francisco.mp3"></audio>
       <button onclick="tocar('audio8')">▶ Ouvir</button>
     </div>
 
     <div class="cartinha">
-      <h3>Tio Felipe</h3>
-      <audio id="audio9" src="tio_felipe.mp3"></audio>
+      <h3>Henrique Primo</h3>
+      <audio id="audio9" src="henrique.mp3"></audio>
       <button onclick="tocar('audio9')">▶ Ouvir</button>
     </div>
 
     <div class="cartinha">
-      <h3>Tia Dani</h3>
-      <audio id="audio10" src="tia_dani.mp3"></audio>
+      <h3>Tio Felipe</h3>
+      <audio id="audio10" src="tio_felipe.mp3"></audio>
       <button onclick="tocar('audio10')">▶ Ouvir</button>
+    </div>
+
+    <div class="cartinha">
+      <h3>Tia Dani</h3>
+      <audio id="audio11" src="tia_dani.mp3"></audio>
+      <button onclick="tocar('audio11')">▶ Ouvir</button>
     </div>
 
     <div class="cartinha">
@@ -202,15 +202,29 @@
 
   <script>
     function tocar(id) {
-      document.querySelectorAll("audio").forEach(audio => {
+      const musicaFundo = document.getElementById("musicaFundo");
+
+      if (musicaFundo && !musicaFundo.paused) {
+        musicaFundo.pause();
+      }
+
+      document.querySelectorAll(".cartinha audio").forEach(audio => {
         if (audio.id !== id) {
           audio.pause();
+          audio.currentTime = 0;
         }
       });
+
       const audio = document.getElementById(id);
-      audio.currentTime = 0;
-      audio.play();
+      audio.play().catch(() => {});
     }
+
+    // inicia música de fundo após primeira interação (regra mobile)
+    document.addEventListener("click", function iniciar() {
+      const musicaFundo = document.getElementById("musicaFundo");
+      if (musicaFundo) musicaFundo.play().catch(() => {});
+      document.removeEventListener("click", iniciar);
+    });
 
     function criarEstrela() {
       const estrela = document.createElement("div");
