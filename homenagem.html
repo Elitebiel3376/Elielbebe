@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Homenagem ao Eliel 💙</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#08142e, #0f2557);
+      color: #e6ecff;
+      text-align: center;
+      overflow-x: hidden;
+      padding-bottom: 60px;
+    }
+
+    /* ESTRELAS */
+    .estrela {
+      position: fixed;
+      top: -10px;
+      font-size: 12px;
+      animation: cair linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    @keyframes cair {
+      from { transform: translateY(0); }
+      to { transform: translateY(110vh); }
+    }
+
+    header {
+      padding: 35px 20px;
+      background: rgba(0,0,0,0.35);
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      color: #bcd4ff;
+      margin-bottom: 8px;
+      font-size: 26px;
+    }
+
+    header p {
+      color: #dbe6ff;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .video-box {
+      background: rgba(255,255,255,0.12);
+      border-radius: 30px;
+      padding: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+    }
+
+    video {
+      width: 100%;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    .descricao {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #dbe6ff;
+    }
+
+    .voltar {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 14px 36px;
+      background: #9bbcff;
+      color: #08142e;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎥 Vídeo de Homenagem</h1>
+    <p>Um pedacinho de amor guardado em imagens 💙</p>
+  </header>
+
+  <div class="container">
+    <div class="video-box">
+      <video controls playsinline>
+        <source src="homenagem.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+      </video>
+    </div>
+
+    <p class="descricao">
+      Esse vídeo foi feito com muito carinho para o Eliel,<br>
+      para que ele sempre saiba o quanto é amado pela família 💙
+    </p>
+
+    <a href="home.html" class="voltar">⬅ Voltar ao menu</a>
+  </div>
+
+  <script>
+    function criarEstrela() {
+      const estrela = document.createElement("div");
+      estrela.className = "estrela";
+      estrela.innerHTML = "⭐";
+      estrela.style.left = Math.random() * window.innerWidth + "px";
+      estrela.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(estrela);
+      setTimeout(() => estrela.remove(), 8000);
+    }
+
+    setInterval(criarEstrela, 300);
+  </script>
+
+</body>
+</html>
